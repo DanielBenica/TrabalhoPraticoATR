@@ -13,7 +13,7 @@ Motor::Motor(int id) {
 //this function simulates the block diagram, given by the professor
 double Motor::getSpeed() {
 	double block1;
-
+	return 2.0;
 }
 
 

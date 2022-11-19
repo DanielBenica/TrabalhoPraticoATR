@@ -32,17 +32,22 @@ int main()
     std::string palavra = "Bom dia";
     std::cout << "Hello World! From main thread\n";
 
-    for (int i = 0; i <= MAX_MOTORS; i++) {
+   for (int i = 0; i <= MAX_MOTORS; i++) {
         motor_pool.push_back(i);
     }
     for (int i = 0; i <=MAX_MOTORS; i++) {
-       // thread_pool.push_back(std::thread(&Motor::hello,&motor_pool[i]));
-        thread_pool.push_back(std::thread(write_word,palavra,i));
+        
+        thread_pool.push_back(std::thread(&Motor::hello,&motor_pool[i]));
+        //thread_pool.push_back(std::thread(write_word,palavra,i));
     }
 
     for (int i = 0; i <=MAX_MOTORS; i++) {
         thread_pool[i].join();
     }
+    // Motor m1(1);
+    // std::thread t1;
+    // t1 = std::thread(&Motor::hello,&m1);
+    // t1.join();
 
     std::cout << "Program ended!";
 }

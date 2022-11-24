@@ -20,17 +20,15 @@ void Motor::hello() {
 
 	while (true) {
 	
-		// int after = id -1;
-		// int before = id +1;
-		// // if(after < 0){ before=0;}
-		// // if(after > 29){ after=0;}
+		int after = id + 1;
+		int before = id - 1;
+		
+		if(after > 29){ after=29;}
+		if(before < 0){ before=0;}
 
-		// // if(before || after){
-		// // 	M.unlock();
-		// // 	break;
-		// // }
+
 		M.lock();
-		if(!lista[id -1] && !lista[id +1]){
+		if(!lista[after] && !lista[before]){
 		lista[id]=1;
 		std::cout << "My id is:" << id <<" My state: "<< lista[id] <<std::endl;
 		M.unlock();
